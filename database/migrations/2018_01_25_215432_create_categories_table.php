@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductImagesTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateProductImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_images', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
-            $table->boolean('featured')->default(false);
-
-            //crear llave primaria y foranea 
-            $table->integer('product_id')->nullable();
-            $table->foreign('product_id')->references('id')->on('products');
+            
+            $table->string('name');
+            $table->string('description');
+            $table->string('image')->nullable();
 
 
             $table->timestamps();
-
         });
     }
 
@@ -35,6 +32,6 @@ class CreateProductImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_images');
+        Schema::dropIfExists('categories');
     }
 }
