@@ -21,8 +21,22 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin/products','ProductController@index');//listado
-Route::get('/admin/products/create','ProductController@create');//crear , devolvera un formulario
 
-Route::post('/admin/products','ProductController@store');//store, se encarga de guardar los datos ingresados en el formularo 
+Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
+    Route::get('/products','ProductController@index');//listado
+	Route::get('/products/create','ProductController@create');//crear , devolvera un formulario
+
+	Route::post('/products','ProductController@store');//store, se encarga de guardar los datos ingresados en el formularo 
+
+	//edicion
+	Route::get('/products/{id}/edit','ProductController@edit');//formulario edicion
+
+	Route::post('/products/{id}/edit','ProductController@update');//actualizar
+
+	Route::delete('/products/{id}','ProductController@destroy');//formulario eliminar
+});
+
+
+
+
 
