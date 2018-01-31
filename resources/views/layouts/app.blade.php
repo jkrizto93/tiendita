@@ -52,6 +52,9 @@
                                     </li>
                                     @if (auth()->user()->admin)
                                     <li>
+                                         <a href="{{url('/admin/categories')}}">Gestionar Categorias</a>
+                                    </li>
+                                    <li>
                                          <a href="{{url('/admin/products')}}">Gestionar Productos</a>
                                     </li>
                                     @endif

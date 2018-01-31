@@ -50,6 +50,14 @@ Route::middleware(['auth','admin'])->prefix('admin')->namespace('Admin')->group(
 	
 	Route::get('/products/{id}/images/select/{image}','ImageController@select');//destacar
 
+/// categorias
+	Route::get('/categories','CategoryController@index');//listado
+	Route::get('/categories/create','CategoryController@create');//crear , devolvera un formulario
+	Route::post('/categories','CategoryController@store');//store, se encarga de guardar los datos ingresados en el formularo 
+	//edicion
+	Route::get('/categories/{id}/edit','CategoryController@edit');//formulario edicion
+	Route::post('/categories/{id}/edit','CategoryController@update');//actualizar
+	Route::delete('/categories/{id}','CategoryController@destroy');//formulario eliminar
 
 
 });
