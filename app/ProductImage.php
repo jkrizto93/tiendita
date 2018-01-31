@@ -11,5 +11,11 @@ class ProductImage extends Model
     	return $this->belongsTo(Product::class);
     	//esto tiene muchas imagenes o: 
     }
-
+    //acceso parra imagen guardadas y urls
+	public function getUrlAttribute(){
+    	if(substr($this->image, 0,4)=="http"){
+    		return $this->image;
+    	}
+    	return '/images/products/'. $this->image;
+    }
 }
