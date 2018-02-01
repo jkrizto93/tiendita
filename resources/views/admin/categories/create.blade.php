@@ -10,7 +10,7 @@
        
 
         <div class="section">
-            <h2 class="title text-center">Registrar Nuevo Producto</h2>
+            <h2 class="title text-center">Registrar Nueva Categoria</h2>
 
                 @if ($errors->any())
                     <div>
@@ -22,20 +22,13 @@
                         </ul>
                     </div>
                 @endif
-             <form method="post" action="{{url('/admin/products')}}">
+             <form method="post" action="{{url('/admin/categories')}}">
                  {{ csrf_field()}}
                  <div class="rows">
                         <div class="col-sm-6">
                             <div class="form-group label-floating">
-                                <label class="control-label">Nombre Producto</label>
+                                <label class="control-label">Nombre Categoria</label>
                                 <input type="text" class="form-control" name="name" value="{{old('name')}}">
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                             <div class="form-group label-floating">
-                                <label class="control-label">Precio del producto</label>
-                                <input type="number" class="form-control" name="price" value="{{old('price')}}">
                             </div>
                         </div>
                         
@@ -44,16 +37,13 @@
                 <br>
                 <br>
 
-                <div class="form-group label-floating">
-                    <label class="control-label">Descripcion</label>
-                    <input type="text" class="form-control" name="description" value="{{old('description')}}">
-                </div>
+              
               
 
-                <textarea class="form-control" placeholder="Descripcion larga del producto" rows="5" name="long_description">{{old('long_description')}}</textarea>
+                <textarea class="form-control" placeholder="Descripcion de la Categoria" rows="5" name="description">{{old('description')}}</textarea>
 
-                <button class="btn btn-primary">Registrar Producto</button>
-                <a href="{{url('/admin/products')}}" class="btn btn-default">Cancelar</a>
+                <button class="btn btn-primary">Registrar Categoria</button>
+                <a href="{{url('/admin/categories')}}" class="btn btn-default">Cancelar</a>
 
 
              </form>

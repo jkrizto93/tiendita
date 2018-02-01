@@ -19,8 +19,16 @@ Route::get('/', 'TestController@welcome');
 
 Auth::routes();
 
+Route::get('/search','SearchController@show');//formulario edicion
+Route::get('/products/json','SearchController@data');//formulario edicion
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/products/{id}','ProductController@show');//formulario edicion
+Route::get('/categories/{category}','CategoryController@show');//formulario edicion
+
+
+
+
 
 Route::post('/cart','CartDetailController@store');//formulario edicion
 Route::delete('/cart','CartDetailController@destroy');//formulario edicion
@@ -33,21 +41,16 @@ Route::post('/order','CartController@update');//formulario edicion
 Route::middleware(['auth','admin'])->prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/products','ProductController@index');//listado
 	Route::get('/products/create','ProductController@create');//crear , devolvera un formulario
-
 	Route::post('/products','ProductController@store');//store, se encarga de guardar los datos ingresados en el formularo 
-
 	//edicion
 	Route::get('/products/{id}/edit','ProductController@edit');//formulario edicion
-
 	Route::post('/products/{id}/edit','ProductController@update');//actualizar
-
 	Route::delete('/products/{id}','ProductController@destroy');//formulario eliminar
 
 
 	Route::get('/products/{id}/images','ImageController@index');//listado
 	Route::post('/products/{id}/images','ImageController@store');//registrar
 	Route::delete('/products/{id}/images','ImageController@destroy');//formulario eliminar
-	
 	Route::get('/products/{id}/images/select/{image}','ImageController@select');//destacar
 
 /// categorias
@@ -55,9 +58,9 @@ Route::middleware(['auth','admin'])->prefix('admin')->namespace('Admin')->group(
 	Route::get('/categories/create','CategoryController@create');//crear , devolvera un formulario
 	Route::post('/categories','CategoryController@store');//store, se encarga de guardar los datos ingresados en el formularo 
 	//edicion
-	Route::get('/categories/{id}/edit','CategoryController@edit');//formulario edicion
-	Route::post('/categories/{id}/edit','CategoryController@update');//actualizar
-	Route::delete('/categories/{id}','CategoryController@destroy');//formulario eliminar
+	Route::get('/categories/{category}/edit','CategoryController@edit');//formulario edicion
+	Route::post('/categories/{category}/edit','CategoryController@update');//actualizar
+	Route::delete('/categories/{category}','CategoryController@destroy');//formulario eliminar
 
 
 });

@@ -15,27 +15,29 @@
 
             <div class="team">
                 <div class="row">
+                    
                     <a href="{{url('/admin/categories/create')}}" class="btn btn-primary btn-round">Nuevo categoria</a>
+
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
+                                <!-- <th class="text-center">#</th>-->
                                 <th class="col-md-2 text-center">Nombre</th>
                                 <th class="col-md-5 text-center">Descripcion</th>
                                 <th class="text-right">Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            @foreach ($categories as $key => $category)
                             <tr>
-                                <td class="text-center">{{$category->id}}</td>
+                               <!-- <td class="text-center">{{$key+1}}</td>-->
                                 <td>{{$category->name}}</td>
                                 <td>{{$category->description}}</td>
                                 
-                                  
+                                <td class="td-actions text-right">
 
                                    <form method="post" action ="{{ url('/admin/categories/'.$category->id)}}">
-                                       {{csrf_field()}}
+                                       {{ csrf_field() }}
                                        {{ method_field('DELETE') }}
 
 
