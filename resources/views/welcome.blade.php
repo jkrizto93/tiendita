@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('body-class','landing-page')
-@section('title','Bienvenido a mi Tiendita')
+@section('title','Bienvenido a '.config('app.name'))
 @section('styles')
 <style>
     .team .row .col-md-4{
@@ -68,7 +68,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="title">Bienbenido a mi Tiendita</h1>
+                <h1 class="title">Bienbenido a mi {{config('app.name')}}</h1>
                 <h4>Sitio para realizar pedidosen linea y contactarnos para la entrega.</h4>
                 <br />
                 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-danger btn-raised btn-lg">
@@ -199,7 +199,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('/js/typeahead.bundle.min.js) }}"></script>
+    <script src="{{ asset('/js/typeahead.bundle.min.js')}}"></script>
     <script >
         $(function(){
             //
@@ -208,7 +208,7 @@
             var products = new Bloodhound({
               datumTokenizer: Bloodhound.tokenizers.whitespace,
               queryTokenizer: Bloodhound.tokenizers.whitespace,
-              prefetch: '{{url("/products/json")}}'
+              prefetch: '{{ url("/products/json") }}'
             });
          
             //

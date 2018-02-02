@@ -27,7 +27,7 @@ class Product extends Model
 
     	//devolveruna imagen por defecto
 
-    	return '/images/products/default.jpg';
+    	return '/images/default.jpg';
     }
 
     public function getCategoryNameAttribute(){
